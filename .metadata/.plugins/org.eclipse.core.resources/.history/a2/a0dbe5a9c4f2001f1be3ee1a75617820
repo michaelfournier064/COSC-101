@@ -1,0 +1,23 @@
+package michael_fournier_COSC101_calculator;
+import java.util.Scanner;
+
+public class Calculator {
+	public static void operationChoice() {
+		Scanner scanner = new Scanner(System.in);
+		char operation = ' ';
+		System.out.println("Enter an operation (+, -, *, /, %(mod))");
+		operation = scanner.next().charAt(0);
+
+		scanner.close();
+	}
+	
+	
+	public static void Addition() {
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Michael Fournier COSC101");
+		System.out.println("This is my calculator project");
+		operationChoice();
+	}
+}

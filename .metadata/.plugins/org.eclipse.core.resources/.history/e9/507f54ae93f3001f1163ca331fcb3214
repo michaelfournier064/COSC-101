@@ -1,0 +1,10 @@
+package mtfournier0_my_calculator;
+
+public class mtfournier0_calculator_guts {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

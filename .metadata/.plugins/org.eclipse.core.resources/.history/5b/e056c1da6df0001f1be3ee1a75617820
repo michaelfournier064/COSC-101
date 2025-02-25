@@ -1,0 +1,8 @@
+package michael_fournier_COSC101_calculator;
+
+public class Calculator {
+
+	public static void main(String[] args) {
+		System.out.println("Michael Fournier COSC101");
+	}
+}
