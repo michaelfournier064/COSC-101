@@ -1,0 +1,65 @@
+package mtfournier0_my_calculator;
+
+import static mtfournier0_my_calculator.mtfournier0_calculator_interface.operationChoice;
+import static mtfournier0_my_calculator.mtfournier0_calculator_interface.numberChoice;
+import mtfournier0_my_calculator.mtfournier0_calculator_interface.OperationData;
+
+public class mtfournier0_calculator_guts {
+
+    // Arithmetic functions
+    public static void addition(double a, double b) {
+        System.out.println("Result (Addition): " + (a + b));
+    }
+    
+    public static void subtraction(double a, double b) {
+        System.out.println("Result (Subtraction): " + (a - b));
+    }
+    
+    public static void multiplication(double a, double b) {
+        System.out.println("Result (Multiplication): " + (a * b));
+    }
+    
+    public static void division(double a, double b) {
+        if (b != 0) {
+            System.out.println("Result (Division): " + (a / b));
+        } else {
+            System.out.println("Error: Division by zero.");
+        }
+    }
+    
+    public static void modulus(double a, double b) {
+        System.out.println("Result (Modulus): " + (a % b));
+    }
+    
+    // Method to perform a single calculation instance
+    public static void calculator_single_instance() {
+        // Gather the operation input from the user.
+        OperationData data = operationChoice();
+        // Gather the number inputs and store them in the same data object.
+        data = numberChoice(data);
+        
+        // Use a switch-case to determine which arithmetic function to call.
+        switch (data.operation) {
+            case '+':
+                addition(data.input1, data.input2);
+                break;
+            case '-':
+                subtraction(data.input1, data.input2);
+                break;
+            case '*':
+                multiplication(data.input1, data.input2);
+                break;
+            case '/':
+                division(data.input1, data.input2);
+                break;
+            case '%':
+                modulus(data.input1, data.input2);
+                break;
+            default:
+                System.out.println("Unknown operation");
+                break;
+        }
+    }
+    
+    // The guts class does not require a main() since the interface handles program startup.
+}

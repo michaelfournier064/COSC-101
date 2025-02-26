@@ -33,7 +33,7 @@ public class mtfournier0_calculator_interface {
         return data;
     }
     
-    // Method to gather numeric inputs from the user and store them in the same OperationData instance
+    // Method to gather numeric inputs from the user and store them
     public static OperationData numberChoice(OperationData data) {
         System.out.println("What is your first number?");
         data.input1 = scanner.nextDouble();
@@ -56,15 +56,12 @@ public class mtfournier0_calculator_interface {
                 String loopchoice = scanner.next();
                 
                 if (loopchoice.equalsIgnoreCase("Yes")) {
-                    // Valid input: continue to the next calculation.
                     break;
                 } else if (loopchoice.equalsIgnoreCase("No")) {
-                    // Valid input: exit the looping method.
                     System.out.println("Exiting calculator.");
                     scanner.close();
                     return;
                 } else {
-                    // Invalid input: notify and re-prompt.
                     System.out.println("Invalid input. Please answer with Yes or No.");
                 }
             }
@@ -75,7 +72,6 @@ public class mtfournier0_calculator_interface {
         System.out.println("Michael Fournier COSC101");
         System.out.println("This is my calculator project");
         
-        // Start the looping calculator
         calculator_looping();
     }
 }

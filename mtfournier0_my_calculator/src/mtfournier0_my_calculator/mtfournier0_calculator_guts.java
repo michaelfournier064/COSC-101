@@ -5,8 +5,6 @@ import static mtfournier0_my_calculator.mtfournier0_calculator_interface.numberC
 import mtfournier0_my_calculator.mtfournier0_calculator_interface.OperationData;
 
 public class mtfournier0_calculator_guts {
-
-    // Arithmetic functions
     public static void addition(double a, double b) {
         System.out.println("Result (Addition): " + (a + b));
     }
@@ -31,14 +29,13 @@ public class mtfournier0_calculator_guts {
         System.out.println("Result (Modulus): " + (a % b));
     }
     
-    // Method to perform a single calculation instance
     public static void calculator_single_instance() {
         // Gather the operation input from the user.
         OperationData data = operationChoice();
         // Gather the number inputs and store them in the same data object.
         data = numberChoice(data);
         
-        // Use a switch-case to determine which arithmetic function to call.
+        // Determine which arithmetic function to call.
         switch (data.operation) {
             case '+':
                 addition(data.input1, data.input2);
@@ -60,6 +57,4 @@ public class mtfournier0_calculator_guts {
                 break;
         }
     }
-    
-    // The guts class does not require a main() since the interface handles program startup.
 }
