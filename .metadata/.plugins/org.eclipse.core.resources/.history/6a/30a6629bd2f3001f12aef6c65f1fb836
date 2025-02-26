@@ -1,0 +1,51 @@
+package mtfournier0_my_calculator;
+
+import java.util.Scanner;
+
+
+public class mtfournier0_calculator_interface {
+    // Create a single Scanner instance to be used throughout the program.
+    static Scanner scanner = new Scanner(System.in);
+    // Helper class to store user input data
+    static class OperationData {
+        char operation;
+        double input1;
+        double input2;
+        String loopchoice;
+    }
+    
+    // Method to gather the operation symbol from the user and validate it
+    public static OperationData operationChoice() {
+        OperationData data = new OperationData();
+        
+        System.out.println("Enter an operation (+, -, *, /, %(mod))");
+        data.operation = scanner.next().charAt(0);
+        
+        // Validate the operation symbol.
+        if (data.operation != '+' && data.operation != '-' &&
+            data.operation != '*' && data.operation != '/' && data.operation != '%') {
+            System.out.println("Invalid operation. Please try again.");
+            // Recursively call the method again to re-prompt for a valid operation.
+            return operationChoice();
+        }
+        
+        return data;
+    }
+    
+    // Method to gather numeric inputs from the user and store them in the same OperationData instance
+    public static OperationData numberChoice(OperationData data) {
+        System.out.println("What is your first number?");
+        data.input1 = scanner.nextDouble();
+        
+        System.out.println("What is your second number?");
+        data.input2 = scanner.nextDouble();
+        
+        return data;
+    }
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

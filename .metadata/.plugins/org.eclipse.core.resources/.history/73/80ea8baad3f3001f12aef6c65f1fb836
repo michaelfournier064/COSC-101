@@ -1,0 +1,74 @@
+package mtfournier0_my_calculator;
+
+import java.util.Scanner;
+import mtfournier0_my_calculator.mtfournier0_calculator_guts.CalculatorGuts;
+
+public class mtfournier0_calculator_interface {
+    // A single Scanner instance for all input operations.
+    private static Scanner scanner = new Scanner(System.in);
+    
+    // Helper class to store user input.
+    public static class OperationData {
+        char operation;
+        double input1;
+        double input2;
+    }
+    
+    // Prompt the user for a valid operation symbol.
+    public static OperationData getOperationData() {
+        OperationData data = new OperationData();
+        boolean valid = false;
+        while (!valid) {
+            System.out.println("Enter an operation (+, -, *, /, %):");
+            data.operation = scanner.next().charAt(0);
+            if (data.operation == '+' || data.operation == '-' ||
+                data.operation == '*' || data.operation == '/' || data.operation == '%') {
+                valid = true;
+            } else {
+                System.out.println("Invalid operation. Please try again.");
+            }
+        }
+        return data;
+    }
+    
+    // Prompt the user for the two numbers.
+    public static void getNumbers(OperationData data) {
+        System.out.println("What is your first number?");
+        data.input1 = scanner.nextDouble();
+        
+        System.out.println("What is your second number?");
+        data.input2 = scanner.nextDouble();
+    }
+    
+    // Prompt the user to decide if another calculation should be performed.
+    public static boolean promptContinue() {
+        while (true) {
+            System.out.println("Would you like to calculate another value? (Yes or No)");
+            String choice = scanner.next();
+            if (choice.equalsIgnoreCase("Yes")) {
+                return true;
+            } else if (choice.equalsIgnoreCase("No")) {
+                return false;
+            } else {
+                System.out.println("Invalid input. Please answer with Yes or No.");
+            }
+        }
+    }
+    
+    // Main method to run the calculator.
+    public static void main(String[] args) {
+        do {
+            // Gather input data.
+            OperationData data = getOperationData();
+            getNumbers(data);
+            
+            // Perform the calculation using the guts.
+            double result = CalculatorGuts.calculate(data.input1, data.input2, data.operation);
+            System.out.println("Result: " + result);
+            
+        } while (promptContinue());
+        
+        System.out.println("Exiting calculator.");
+        scanner.close();
+    }
+}

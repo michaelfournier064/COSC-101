@@ -1,48 +1,11 @@
 package mtfournier0_my_calculator;
-import java.util.Scanner;
+
+import static mtfournier0_my_calculator.mtfournier0_calculator_interface.operationChoice;
+import static mtfournier0_my_calculator.mtfournier0_calculator_interface.numberChoice;
+import mtfournier0_my_calculator.mtfournier0_calculator_interface.OperationData;
 
 public class mtfournier0_calculator_guts {
 
-    // Create a single Scanner instance to be used throughout the program.
-    static Scanner scanner = new Scanner(System.in);
-
-    // Helper class to store user input data
-    static class OperationData {
-        char operation;
-        double input1;
-        double input2;
-        String loopchoice;
-    }
-    
-    // Method to gather the operation symbol from the user and validate it
-    public static OperationData operationChoice() {
-        OperationData data = new OperationData();
-        
-        System.out.println("Enter an operation (+, -, *, /, %(mod))");
-        data.operation = scanner.next().charAt(0);
-        
-        // Validate the operation symbol.
-        if (data.operation != '+' && data.operation != '-' &&
-            data.operation != '*' && data.operation != '/' && data.operation != '%') {
-            System.out.println("Invalid operation. Please try again.");
-            // Recursively call the method again to re-prompt for a valid operation.
-            return operationChoice();
-        }
-        
-        return data;
-    }
-    
-    // Method to gather numeric inputs from the user and store them in the same OperationData instance
-    public static OperationData numberChoice(OperationData data) {
-        System.out.println("What is your first number?");
-        data.input1 = scanner.nextDouble();
-        
-        System.out.println("What is your second number?");
-        data.input2 = scanner.nextDouble();
-        
-        return data;
-    }
-    
     // Arithmetic functions
     public static void addition(double a, double b) {
         System.out.println("Result (Addition): " + (a + b));
@@ -98,41 +61,5 @@ public class mtfournier0_calculator_guts {
         }
     }
     
-    // Method to loop the calculator based on user choice.
-    public static void calculator_looping() {
-        while (true) {
-            // Perform a single calculation.
-            calculator_single_instance();
-            
-            // Loop until we get a valid input.
-            while (true) {
-                System.out.println("Would you like to calculate another value? (Yes or No)");
-                String loopchoice = scanner.next();
-                
-                if (loopchoice.equalsIgnoreCase("Yes")) {
-                    // Valid input: continue to the next calculation.
-                    break;
-                } else if (loopchoice.equalsIgnoreCase("No")) {
-                    // Valid input: exit the looping method.
-                    System.out.println("Exiting calculator.");
-                    return;
-                } else {
-                    // Invalid input: notify and re-prompt.
-                    System.out.println("Invalid input. Please answer with Yes or No.");
-                }
-            }
-        }
-    }
-
-    
-    public static void main(String[] args) {
-        System.out.println("Michael Fournier COSC101");
-        System.out.println("This is my calculator project");
-        
-        // Start the looping calculator
-        calculator_looping();
-        
-        // Close the scanner once all input has been processed.
-        scanner.close();
-    }
+    // The guts class does not require a main() since the interface handles program startup.
 }
