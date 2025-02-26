@@ -21,12 +21,16 @@ public class mtfournier0_calculator_guts {
         if (input2 != 0) {
             System.out.println("Result (Division): " + (input1 / input2));
         } else {
-            System.out.println("Error: Division by zero.");
+            System.out.println("Error: Cannot divide by zero.");
         }
     }
     
     public static void modulus(double input1, double input2) {
-        System.out.println("Result (Modulus): " + (input1 % input2));
+        if (input2 != 0) {
+            System.out.println("Result (Modulus): " + (input1 % input2));
+        } else {
+            System.out.println("Error: Cannot mod by zero.");
+        }
     }
     
     public static void calculator_single_instance() {
