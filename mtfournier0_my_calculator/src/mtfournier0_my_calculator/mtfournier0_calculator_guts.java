@@ -33,6 +33,7 @@ public class mtfournier0_calculator_guts {
         }
     }
     
+    // Method to determine which arithmetic method to use
     public static void calculator_single_instance() {
         // Gather the operation input from the user.
         OperationData data = operationChoice();

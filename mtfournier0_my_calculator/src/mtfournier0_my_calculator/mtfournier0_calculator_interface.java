@@ -53,6 +53,7 @@ public class mtfournier0_calculator_interface {
     
     // Method to loop the calculator based on user choice.
     public static void calculator_looping() {
+        // Loop until user not not want to make another calculation
         while (true) {
             // Perform a single calculation.
             calculator_single_instance();
