@@ -32,14 +32,21 @@ public class mtfournier0_calculator_interface {
         
         return data;
     }
+    public static double getValidDouble(Scanner scanner) {
+        while (!scanner.hasNextDouble()) {
+            System.out.println("Invalid input. Please enter a real number.");
+            scanner.next(); // Clear the invalid input
+        }
+        return scanner.nextDouble();
+    }
     
     // Method to gather numeric inputs from the user and store them
     public static OperationData numberChoice(OperationData data) {
         System.out.println("What is your first number?");
-        data.input1 = scanner.nextDouble();
+        data.input1 = getValidDouble(scanner);
         
         System.out.println("What is your second number?");
-        data.input2 = scanner.nextDouble();
+        data.input2 = getValidDouble(scanner);
         
         return data;
     }
